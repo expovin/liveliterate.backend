@@ -1,9 +1,17 @@
 {
-  "name": "liveliterate.backend",
-  "version": "0.0.0",
+  "name": "liveliterate",
+  "version": "1.0.0",
+  "description": "Liveliterate.com dynamic website",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
+  },
+  "engines": {
+    "node": "14.x"
+  },  
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/expovin/liveliterate.backend"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
