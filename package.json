@@ -8,7 +8,7 @@
   },
   "engines": {
     "node": "14.x"
-  },  
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/expovin/liveliterate.backend"
@@ -20,6 +20,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mariadb": "^2.5.5",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "mysql": "^2.18.1"
   }
 }
