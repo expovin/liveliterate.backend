@@ -9,8 +9,6 @@ var apiRouter = require('./routes/api');
 
 var app = express();
 
-console.log("======= Starting LiveLiterate Backend Ver. 1.0.0 =============");
-
 
 // CORS Management
 var allowedOrigins = ['https://liveliterate.com',
@@ -18,20 +16,15 @@ var allowedOrigins = ['https://liveliterate.com',
                       'http://localhost:3000',
                       'http://localhost:3001',
                       'http://localhost:3002',
-                      'http://admin.liveliterate.com',
-                      'https://admin.liveliterate.com',
-                      'http://www.liveliterate.com',
-                      'https://www.liveliterate.com',];
+                      'http://admin.liveliterate.com/',
+                      'https://admin.liveliterate.com/'];
 
 
 // Add headers
 app.use(function (req, res, next) {
 
-  console.log("Getting Origin : "+req.headers.origin);
+  if(allowedOrigins.indexOf(req.headers.origin) !== -1){
 
-  if(allowedOrigins.indexOf(req.headers.origin) != -1){
-
-    console.log("Ogigin "+req.headers.origin+" Allowed")
     res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
