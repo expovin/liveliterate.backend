@@ -1,6 +1,10 @@
 var express = require('express');
 var fs = require('fs');
+const multer  = require('multer')
+const upload = multer({ dest: 'public/assets/img/team/' })
+
 var repo = require('../lib/repo');
+
 var router = express.Router();
 
 let R = new repo();
@@ -32,13 +36,19 @@ router.route('/team')
   .catch(error => console.log("Error : "+error))
 })
 
+
 router.route('/team/picture')
-.put((req, res, next) => {
-  fs.writeFile("img.jpg", req.body, "binary", (error) => {
-    if(error) console.log(error);
-    console.log("File scritto correttamente!");
-  })
-})
+.put(upload.single('new_picture'), function (req, res) {
+  // req.file is the name of your file in the form above, here 'uploaded_file'
+  // req.body will hold the text fields, if there were any 
+
+  
+  let ext=req.file.mimetype.split("/")[1];
+  console.log(ext);
+  R.changeTeamPicture(req.headers.id, req.file.filename+"."+ext)
+  .then(contents => res.status(200).json({success:true, contents:contents}))
+  .catch(error => console.log("Error : "+error))
+});
 
 
 router.route('/courses')
